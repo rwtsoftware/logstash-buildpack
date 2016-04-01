@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exit [ -e "${1}/logstash.sh" ]
