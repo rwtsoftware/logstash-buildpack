@@ -6,4 +6,4 @@ uname -a
 
 wget https://download.elastic.co/logstash/logstash/packages/debian/logstash_2.3.0-1_all.deb
 
-dpkg -i logstash-2.3.0-1.noarch.rpm
+sudo dpkg -i logstash-2.3.0-1.noarch.rpm
