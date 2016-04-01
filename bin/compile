@@ -1,9 +1,16 @@
 #!/bin/bash
 
-uname
+
+BUILD_DIR=${1:-}
 
 uname -a
 
 wget https://download.elastic.co/logstash/logstash/packages/debian/logstash_2.3.0-1_all.deb
 
-sudo dpkg -i logstash-2.3.0-1.noarch.rpm
+INSTALL_DIR="$BUILD_DIR/.bp/logstash/"
+mkdir -p ${INSTALL_DIR}
+dpkg -i logstash_2.3.0-1_all.deb --force-not-root --root="${INSTALL_DIR}"
+
+ls -l ${INSTALL_DIR}
+
+export PATH="${INSTALL_DIR}":$PATH
