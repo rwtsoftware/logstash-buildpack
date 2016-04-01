@@ -4,6 +4,6 @@ uname
 
 uname -a
 
-wget https://download.elastic.co/logstash/logstash/packages/centos/logstash-2.3.0-1.noarch.rpm
+wget https://download.elastic.co/logstash/logstash/packages/debian/logstash_2.3.0-1_all.deb
 
-rpm -i logstash-2.3.0-1.noarch.rpm
+dpkg -i logstash-2.3.0-1.noarch.rpm
