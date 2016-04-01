@@ -5,12 +5,16 @@ BUILD_DIR=${1:-}
 
 uname -a
 
-wget https://download.elastic.co/logstash/logstash/packages/debian/logstash_2.3.0-1_all.deb
 
-INSTALL_DIR="$BUILD_DIR/.bp/logstash/"
+INSTALL_DIR="$BUILD_DIR/.bp/"
 mkdir -p ${INSTALL_DIR}
-dpkg -i logstash_2.3.0-1_all.deb --force-not-root --root="${INSTALL_DIR}"
+pushd ${INSTALL_DIR}
+  wget https://download.elastic.co/logstash/logstash/logstash-2.3.0.tar.gz
+  tar -zxf logstash-2.3.0.tar.gz
+  ln -s logstash-2.3.0 logstash
+popd
 
 ls -l ${INSTALL_DIR}
+ls -l ${INSTALL_DIR}/logstash
 
-export PATH="${INSTALL_DIR}":$PATH
+export PATH="${INSTALL_DIR}/logstash/bin":$PATH
