@@ -1,22 +1,28 @@
 #!/bin/bash
 
-
 BUILD_DIR=${1:-}
 
 uname -a
 
-
 INSTALL_DIR="$BUILD_DIR/.bp/"
 mkdir -p ${INSTALL_DIR}
+
+pushd ${INSTALL_DIR}
+  wget http://download.oracle.com/otn-pub/java/jdk/8u77-b03/jre-8u77-linux-x64.tar.gz
+  tar -zxf jre-8u77-linux-x64.tar.gz
+  ln -s jre-8u77-linux-x64 jre
+popd
+export PATH="${INSTALL_DIR}/jre/bin":$PATH
+
 pushd ${INSTALL_DIR}
   wget https://download.elastic.co/logstash/logstash/logstash-2.3.0.tar.gz
   tar -zxf logstash-2.3.0.tar.gz
   ln -s logstash-2.3.0 logstash
 popd
+export PATH="${INSTALL_DIR}/logstash/bin":$PATH
 
 ls -l ${INSTALL_DIR}
-ls -l ${INSTALL_DIR}/logstash
-
-export PATH="${INSTALL_DIR}/logstash/bin":$PATH
+ls -l ${INSTALL_DIR}/logstash/
+ls -l ${INSTALL_DIR}/jdk/
 
 logstash agent -vvvv
