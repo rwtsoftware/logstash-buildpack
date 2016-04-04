@@ -22,7 +22,7 @@ popd
 export PATH="${INSTALL_DIR}/logstash/bin":$PATH
 
 ls -l ${INSTALL_DIR}
+ls -l ${INSTALL_DIR}/jre/
 ls -l ${INSTALL_DIR}/logstash/
-ls -l ${INSTALL_DIR}/jdk/
 
 logstash agent -vvvv
