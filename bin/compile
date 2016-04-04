@@ -25,8 +25,8 @@ ls -l ${INSTALL_DIR}
 ls -l ${INSTALL_DIR}/jre/
 ls -l ${INSTALL_DIR}/logstash/
 
-mkdir -p $build_dir/.profile.d
-ENV_FILE=$build_dir/.profile.d/setenv.sh
+mkdir -p $BUILD_DIR/.profile.d
+ENV_FILE=$BUILD_DIR/.profile.d/setenv.sh
 > $ENV_FILE
 echo "export PATH=\"${INSTALL_DIR}/jre/bin\":\$PATH" >> $ENV_FILE
 echo "export PATH=\"${INSTALL_DIR}/logstash/bin\":\$PATH" >> $ENV_FILE
