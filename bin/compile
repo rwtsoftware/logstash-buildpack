@@ -25,4 +25,4 @@ ls -l ${INSTALL_DIR}
 ls -l ${INSTALL_DIR}/jre/
 ls -l ${INSTALL_DIR}/logstash/
 
-logstash agent -vvvv
+logstash --version
