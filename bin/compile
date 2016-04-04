@@ -18,3 +18,5 @@ ls -l ${INSTALL_DIR}
 ls -l ${INSTALL_DIR}/logstash
 
 export PATH="${INSTALL_DIR}/logstash/bin":$PATH
+
+logstash agent -vvvv
