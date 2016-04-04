@@ -34,4 +34,5 @@ echo "export PATH=\"${INSTALL_DIR}/logstash/bin\":\$PATH" >> $ENV_FILE
 cat $ENV_FILE
 ls -l $ENV_FILE
 
-logstash --version
+which logstash
+logstash agent
