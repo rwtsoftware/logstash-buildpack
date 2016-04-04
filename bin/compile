@@ -10,7 +10,7 @@ mkdir -p ${INSTALL_DIR}
 pushd ${INSTALL_DIR}
   wget --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u77-b03/jre-8u77-linux-x64.tar.gz
   tar -zxf jre-8u77-linux-x64.tar.gz
-  ln -s jre-8u77-linux-x64 jre
+  ln -s jre1.8.0_77 jre
 popd
 export PATH="${INSTALL_DIR}/jre/bin":$PATH
 
