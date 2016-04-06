@@ -16,8 +16,9 @@ export PATH="${INSTALL_DIR}/jre/bin":$PATH
 
 pushd ${INSTALL_DIR}
   wget https://download.elastic.co/logstash/logstash/logstash-2.3.0.tar.gz
-  tar -zxf logstash-2.3.0.tar.gz
-  ln -s logstash-2.3.0 logstash
+  wget https://download.elastic.co/logstash/logstash/logstash-all-plugins-2.3.0.tar.gz
+  tar -zxf logstash-all-plugins-2.3.0.tar.gz
+  ln -s logstash-all-plugins-2.3.0 logstash
 popd
 export PATH="${INSTALL_DIR}/logstash/bin":$PATH
 
@@ -39,8 +40,6 @@ pwd
 echo "whoami: "
 whoami
 which logstash
-echo "Install plugins:"
-logstash-plugin install
 echo "PLUGINS LISTED HERE::::"
 logstash-plugin list --verbose
 date
