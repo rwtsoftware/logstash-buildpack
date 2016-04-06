@@ -52,7 +52,7 @@ java -version
 echo "whoami: "
 whoami
 which logstash
-logstash-plugin install logstash-codecs-rubydebug
+logstash-plugin install logstash-codec-rubydebug
 logstash-plugin install logstash-input-stdin
 logstash-plugin install logstash-input-tcp
 logstash-plugin install logstash-input-udp
