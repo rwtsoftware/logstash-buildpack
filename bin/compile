@@ -38,7 +38,7 @@ ls -la ./
 pwd
 which logstash
 echo "PLUGINS LISTED HERE::::"
-bin/plugin list --verbose
+plugin list --verbose
 date
 logstash agent -vvvv
 date
