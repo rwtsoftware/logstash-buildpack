@@ -38,9 +38,9 @@ ls -l ${INSTALL_DIR}/logstash/bin/
 mkdir -p $BUILD_DIR/.profile.d
 ENV_FILE=$BUILD_DIR/.profile.d/setenv.sh
 > $ENV_FILE
-echo "export PATH=\"\${HOME}/.bp/jre/bin\":\$PATH" >> $ENV_FILE
+echo "export PATH=\"/home/vcap/app/.bp/jre/bin\":\$PATH" >> $ENV_FILE
 #echo "export PATH=\"${INSTALL_DIR}/jruby/bin\":\$PATH" >> $ENV_FILE
-echo "export PATH=\"\${INSTALL_DIR}/.bp/logstash/bin\":\$PATH" >> $ENV_FILE
+echo "export PATH=\"/home/vcap/app/.bp/logstash/bin\":\$PATH" >> $ENV_FILE
 
 cat $ENV_FILE
 ls -l $ENV_FILE
