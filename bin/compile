@@ -37,6 +37,8 @@ ls -l $ENV_FILE
 ls -la ./
 pwd
 which logstash
+echo "PLUGINS LISTED HERE::::"
+bin/plugin list --verbose
 date
 logstash agent -vvvv
 date
