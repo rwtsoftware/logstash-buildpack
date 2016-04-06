@@ -34,7 +34,9 @@ echo "export PATH=\"${INSTALL_DIR}/logstash/bin\":\$PATH" >> $ENV_FILE
 cat $ENV_FILE
 ls -l $ENV_FILE
 
-ls -l ./
+ls -la ./
 pwd
 which logstash
+date
 logstash agent
+date
