@@ -38,5 +38,5 @@ ls -la ./
 pwd
 which logstash
 date
-logstash agent
+logstash agent -vvvv
 date
