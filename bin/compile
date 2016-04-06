@@ -36,9 +36,11 @@ ls -l $ENV_FILE
 
 ls -la ./
 pwd
+echo "whoami: "
+whoami
 which logstash
 echo "PLUGINS LISTED HERE::::"
-plugin list --verbose
+logstash-plugin list --verbose
 date
 logstash agent -vvvv
 date
