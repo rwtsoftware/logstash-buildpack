@@ -52,9 +52,11 @@ java -version
 echo "whoami: "
 whoami
 which logstash
-logstash-plugin install stdin
-logstash-plugin install json
-logstash-plugin install elasticsearch
+logstash-plugin install logstash-input-stdin
+logstash-plugin install logstash-input-tcp
+logstash-plugin install logstash-input-udp
+logstash-plugin install logstash-filter-json
+logstash-plugin install logstash-output-elasticsearch
 echo "PLUGINS LISTED HERE::::"
 logstash-plugin list --verbose
 date
