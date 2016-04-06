@@ -46,6 +46,7 @@ cat $ENV_FILE
 ls -l $ENV_FILE
 
 ls -la ./
+ls -la ./app/
 pwd
 echo "java version"
 java -version
@@ -61,5 +62,6 @@ logstash-plugin install logstash-output-elasticsearch
 echo "PLUGINS LISTED HERE::::"
 logstash-plugin list --verbose
 date
+
 logstash agent -vvvv
 date
