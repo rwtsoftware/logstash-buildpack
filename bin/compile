@@ -63,5 +63,4 @@ logstash-plugin install logstash-output-elasticsearch
 echo "PLUGINS LISTED HERE::::"
 logstash-plugin list --verbose
 date
-logstash agent -vvvv -f ./app/logstash.conf
 date
