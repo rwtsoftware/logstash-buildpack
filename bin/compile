@@ -15,6 +15,13 @@ popd
 export PATH="${INSTALL_DIR}/jre/bin":$PATH
 
 pushd ${INSTALL_DIR}
+  wget https://s3.amazonaws.com/jruby.org/downloads/9.0.5.0/jruby-bin-9.0.5.0.tar.gz
+  tar -zxf jruby-bin-9.0.5.0.tar.gz
+  ln -s jruby-9.0.5.0 jruby
+popd
+export PATH="${INSTALL_DIR}/jruby/bin":$PATH
+
+pushd ${INSTALL_DIR}
   wget https://download.elastic.co/logstash/logstash/logstash-all-plugins-2.3.0.tar.gz
   tar -zxf logstash-all-plugins-2.3.0.tar.gz
   ln -s logstash-2.3.0 logstash
@@ -30,6 +37,7 @@ mkdir -p $BUILD_DIR/.profile.d
 ENV_FILE=$BUILD_DIR/.profile.d/setenv.sh
 > $ENV_FILE
 echo "export PATH=\"${INSTALL_DIR}/jre/bin\":\$PATH" >> $ENV_FILE
+echo "export PATH=\"${INSTALL_DIR}/jruby/bin\":\$PATH" >> $ENV_FILE
 echo "export PATH=\"${INSTALL_DIR}/logstash/bin\":\$PATH" >> $ENV_FILE
 
 cat $ENV_FILE
