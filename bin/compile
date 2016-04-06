@@ -38,7 +38,7 @@ ls -l $ENV_FILE
 ls -la ./
 pwd
 echo "java version"
-java --version
+java -version
 echo "whoami: "
 whoami
 which logstash
