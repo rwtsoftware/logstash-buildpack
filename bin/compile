@@ -2,65 +2,31 @@
 
 BUILD_DIR=${1:-}
 
-uname -a
-
 INSTALL_DIR="$BUILD_DIR/.bp/"
 mkdir -p ${INSTALL_DIR}
-
-pushd ${INSTALL_DIR}
-  wget --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u77-b03/jre-8u77-linux-x64.tar.gz
-  tar -zxf jre-8u77-linux-x64.tar.gz
-  ln -s jre1.8.0_77 jre
-popd
-export PATH="${INSTALL_DIR}/jre/bin":$PATH
-
-#pushd ${INSTALL_DIR}
-#  wget https://s3.amazonaws.com/jruby.org/downloads/9.0.5.0/jruby-bin-9.0.5.0.tar.gz
-#  tar -zxf jruby-bin-9.0.5.0.tar.gz
-#  ln -s jruby-9.0.5.0 jruby
-#popd
-#export PATH="${INSTALL_DIR}/jruby/bin":$PATH
-
-pushd ${INSTALL_DIR}
-  #wget https://download.elastic.co/logstash/logstash/logstash-all-plugins-2.3.0.tar.gz
-  #tar -zxf logstash-all-plugins-2.3.0.tar.gz
-  wget https://download.elastic.co/logstash/logstash/logstash-2.3.0.tar.gz
-  tar -zxf logstash-2.3.0.tar.gz
-  ln -s logstash-2.3.0 logstash
-popd
-export PATH="${INSTALL_DIR}/logstash/bin":$PATH
-
-ls -l ${INSTALL_DIR}
-ls -l ${INSTALL_DIR}/jre/
-ls -l ${INSTALL_DIR}/logstash/
-ls -l ${INSTALL_DIR}/logstash/bin/
 
 mkdir -p $BUILD_DIR/.profile.d
 ENV_FILE=$BUILD_DIR/.profile.d/setenv.sh
 > $ENV_FILE
+
+pushd ${INSTALL_DIR}
+  wget -q --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u77-b03/jre-8u77-linux-x64.tar.gz
+  tar -zxf jre-8u77-linux-x64.tar.gz
+  ln -s jre1.8.0_77 jre
+popd
+export PATH="${INSTALL_DIR}/jre/bin":$PATH
 echo "export PATH=\"/home/vcap/app/.bp/jre/bin\":\$PATH" >> $ENV_FILE
-#echo "export PATH=\"${INSTALL_DIR}/jruby/bin\":\$PATH" >> $ENV_FILE
+
+pushd ${INSTALL_DIR}
+  wget -q https://download.elastic.co/logstash/logstash/logstash-2.3.0.tar.gz
+  tar -zxf logstash-2.3.0.tar.gz
+  ln -s logstash-2.3.0 logstash
+popd
+export PATH="${INSTALL_DIR}/logstash/bin":$PATH
 echo "export PATH=\"/home/vcap/app/.bp/logstash/bin\":\$PATH" >> $ENV_FILE
 
-cat $ENV_FILE
-ls -l $ENV_FILE
-
-ls -la ./
-ls -la ./app/
-find . -name "logstash.log"
-pwd
-echo "java version"
-java -version
-echo "whoami: "
-whoami
-which logstash
-logstash-plugin install logstash-codec-rubydebug
-logstash-plugin install logstash-input-stdin
-logstash-plugin install logstash-input-tcp
-logstash-plugin install logstash-input-udp
-logstash-plugin install logstash-filter-json
-logstash-plugin install logstash-output-elasticsearch
-echo "PLUGINS LISTED HERE::::"
-logstash-plugin list --verbose
-date
-date
+while read plugin_name; do
+  if echo "$plugin_name" | egrep -q "^\w+-\w+-\w+$"; then 
+    logstash-plugin install $plugin_name
+  fi
+done < logstash-plugins.txt

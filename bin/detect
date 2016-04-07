@@ -1,3 +1,9 @@
 #!/bin/bash
 
-exit [ -e "${1}/logstash.sh" ]
+if [ -e "${1}/logstash.sh" ]
+  if [ -e "${1}/logstash-plugins.txt" ]; then
+    echo "logstash buildpack"
+    exit 0;
+  fi
+fi
+exit 1;
