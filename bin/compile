@@ -29,4 +29,4 @@ while read plugin_name; do
   if echo "$plugin_name" | egrep -q "^\w+-\w+-\w+$"; then 
     logstash-plugin install $plugin_name
   fi
-done < logstash-plugins.txt
+done < ${BUILD_DIR}/logstash-plugins.txt
