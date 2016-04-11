@@ -10,6 +10,13 @@ ENV_FILE=$BUILD_DIR/.profile.d/setenv.sh
 > $ENV_FILE
 
 pushd ${INSTALL_DIR}
+  wget https://pivotal-buildpacks.s3.amazonaws.com/concourse-binaries/nginx/nginx-1.9.14-linux-x64.tgz
+  tar -zxf nginx-1.9.14-linux-x64.tgz
+popd
+export PATH="${INSTALL_DIR}/nginx/sbin":$PATH
+echo "export PATH=\"/home/vcap/app/.bp/nginx/sbin\":\$PATH" >> $ENV_FILE
+
+pushd ${INSTALL_DIR}
   wget -q --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u77-b03/jre-8u77-linux-x64.tar.gz
   tar -zxf jre-8u77-linux-x64.tar.gz
   ln -s jre1.8.0_77 jre
