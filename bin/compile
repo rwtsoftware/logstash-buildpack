@@ -1,7 +1,7 @@
 #!/bin/bash
 
 BUILD_DIR=${1:-}
-BUILDPACK_DIR=$(cd $(dirname $0); cd ../..; pwd)
+BUILDPACK_DIR=$(cd $(dirname $0); cd ..; pwd)
 
 INSTALL_DIR="$BUILD_DIR/.bp/"
 mkdir -p ${INSTALL_DIR}
