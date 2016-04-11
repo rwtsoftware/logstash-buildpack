@@ -10,7 +10,7 @@ ENV_FILE=$BUILD_DIR/.profile.d/setenv.sh
 > $ENV_FILE
 
 pushd ${INSTALL_DIR}
-  wget https://pivotal-buildpacks.s3.amazonaws.com/concourse-binaries/nginx/nginx-1.9.14-linux-x64.tgz
+  wget -q https://pivotal-buildpacks.s3.amazonaws.com/concourse-binaries/nginx/nginx-1.9.14-linux-x64.tgz
   tar -zxf nginx-1.9.14-linux-x64.tgz
 popd
 export PATH="${INSTALL_DIR}/nginx/sbin":$PATH
