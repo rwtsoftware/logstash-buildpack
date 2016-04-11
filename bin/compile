@@ -15,6 +15,7 @@ pushd ${INSTALL_DIR}
 popd
 export PATH="${INSTALL_DIR}/nginx/sbin":$PATH
 echo "export PATH=\"/home/vcap/app/.bp/nginx/sbin\":\$PATH" >> $ENV_FILE
+cp ${BUILD_DIR}/conf/nginx.conf ${BUILD_DIR}
 
 pushd ${INSTALL_DIR}
   wget -q --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u77-b03/jre-8u77-linux-x64.tar.gz
