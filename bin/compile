@@ -1,7 +1,7 @@
 #!/bin/bash
 
 BUILD_DIR=${1:-}
-BUILDPACK_DIR=$(cd $(dirname $0); cd ..; pwd)
+BUILDPACK_DIR=$(cd $(dirname $0); cd ../../..; pwd)
 
 INSTALL_DIR="$BUILD_DIR/.bp/"
 mkdir -p ${INSTALL_DIR}
@@ -16,7 +16,7 @@ pushd ${INSTALL_DIR}
 popd
 export PATH="${INSTALL_DIR}/nginx/sbin":$PATH
 echo "export PATH=\"/home/vcap/app/.bp/nginx/sbin\":\$PATH" >> $ENV_FILE
-ll ${BUILDPACK_DIR}
+ls -al ${BUILDPACK_DIR}
 cp ${BUILDPACK_DIR}/conf/nginx.conf ${BUILD_DIR}
 
 pushd ${INSTALL_DIR}
