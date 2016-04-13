@@ -4,6 +4,6 @@ cat << EOF
 config_vars:
   TEST_ENV: ryan-buildpack
 default_process_types:
-  web: logstash agent -f ./logstash.conf
+  web: ./start.sh
 EOF
 
